@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "healthCheck"
+    }
+  },
+  "defaultProject": "healthCheck",
+  "cli": {
+    "analytics": "56c758a7-3aec-462b-954b-727d1404272a"
+  }
 }

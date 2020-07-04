@@ -1,0 +1,89 @@
+<div class="form__container">
+    <mat-card class="form__card">
+        <mat-card-header>
+            <mat-card-title>Iniciar sesión</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="form" (ngSubmit)="signin()">
+                <mat-form-field class="form__field">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input
+                        matInput
+                        type="email"
+                        [(formControl)]="email"
+                        placeholder="usuario@ejemplo.com"
+                        required
+                    />
+                    <mat-error
+                        *ngIf="
+                            email.hasError('email') &&
+                            !email.hasError('required')
+                        "
+                        >Dirección de correo electrónico no válido</mat-error
+                    >
+                    <mat-error *ngIf="email.hasError('required')"
+                        >Correo electrónico es requerido</mat-error
+                    >
+                    <button
+                        mat-button
+                        matSuffix
+                        *ngIf="email"
+                        (click)="this.email.reset('')"
+                    >
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <mat-form-field class="form__field">
+                    <mat-label>Contraseña</mat-label>
+                    <input
+                        matInput
+                        [type]="hidePass ? 'password' : 'text'"
+                        [(formControl)]="pass"
+                        required
+                    />
+                    <mat-error *ngIf="pass.hasError('required')"
+                        >Contraseña es requerida</mat-error
+                    >
+                    <button mat-button matSuffix (click)="hidePass = !hidePass">
+                        <mat-icon>{{
+                            hidePass ? "visibility" : "visibility_off"
+                        }}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <button mat-flat-button color="accent" class="form__submit">
+                    Iniciar Sesión
+                </button>
+            </form>
+            <div class="form__field socialAuth">
+                <p>
+                    Inicia sesión con
+                    <button mat-button (click)="googleAuth()">
+                        <mat-icon
+                            ><span
+                                class="iconify google"
+                                data-icon="bx:bxl-google"
+                                data-inline="false"
+                            ></span
+                        ></mat-icon>
+                    </button>
+                    <button mat-button (click)="facebookAuth()">
+                        <mat-icon
+                            ><span
+                                class="iconify facebook"
+                                data-icon="bx:bxl-facebook"
+                                data-inline="false"
+                            ></span
+                        ></mat-icon>
+                    </button>
+                </p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="form__field switchSession">
+        <p>¿Aún no tienes cuenta?</p>
+        <button mat-button color="accent">Crear cuenta</button>
+    </div>
+</div>

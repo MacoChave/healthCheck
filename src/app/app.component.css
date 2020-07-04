@@ -1,0 +1,10 @@
+.rootStyle {
+    background: inherit;
+}
+
+.icon {
+    margin: 0 0.5rem;
+}
+.spacer {
+    flex: 1 1 auto;
+}
