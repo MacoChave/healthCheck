@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    firebaseConfig: {
+        apiKey: 'AIzaSyAht3Pu6O_GSq6gFdyRkTM94IDDd6zgcrw',
+        authDomain: 'controla-salud.firebaseapp.com',
+        databaseURL: 'https://controla-salud.firebaseio.com',
+        projectId: 'controla-salud',
+        storageBucket: 'controla-salud.appspot.com',
+        messagingSenderId: '608217481598',
+        appId: '1:608217481598:web:cdf11a6474f5e893fd732f',
+    },
 };
 
 /*
