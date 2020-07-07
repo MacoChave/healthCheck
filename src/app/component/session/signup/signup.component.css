@@ -1,0 +1,39 @@
+.form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    height: -webkit-fill-available;
+}
+
+.form__card {
+    width: 80vw;
+}
+
+.form {
+    margin: auto;
+}
+
+.form__field {
+    display: flex;
+    justify-content: center;
+}
+
+.form__submit {
+    width: 100%;
+}
+
+.switchSession {
+    position: absolute;
+    bottom: 2rem;
+    font-size: small;
+}
+
+.facebook {
+    color: #3b5999;
+}
+
+.google {
+    color: #dd4b39;
+}

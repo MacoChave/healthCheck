@@ -4,7 +4,7 @@
             <mat-card-title>Iniciar sesión</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <form class="form">
+            <form class="form" (ngSubmit)="signin()">
                 <mat-form-field class="form__field">
                     <mat-label>Correo electrónico</mat-label>
                     <input
@@ -52,12 +52,7 @@
                     </button>
                 </mat-form-field>
 
-                <button
-                    mat-flat-button
-                    color="accent"
-                    class="form__submit"
-                    (ngSubmit)="signin()"
-                >
+                <button mat-flat-button color="accent" class="form__submit">
                     Iniciar Sesión
                 </button>
             </form>
@@ -73,7 +68,7 @@
 
             <div class="form__field socialAuth">
                 <p>
-                    o puedes ingresar con
+                    Inicia sesión con
                 </p>
                 <button mat-button (click)="googleAuth()">
                     <mat-icon

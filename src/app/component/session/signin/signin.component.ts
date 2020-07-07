@@ -21,11 +21,10 @@ export class SigninComponent implements OnInit {
     }
 
     signin() {
+        console.log({ email: this.email, pass: this.pass });
         this.authService
             .doAccess(this.email.value, this.pass.value)
-            .then((res) => {
-                this.router.navigate(['home']);
-            })
+            .then((res) => this.router.navigate(['home']))
             .catch((err) => console.error(err));
     }
 
