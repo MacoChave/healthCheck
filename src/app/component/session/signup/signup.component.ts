@@ -13,29 +13,27 @@ export class SignupComponent implements OnInit {
     pass = new FormControl('', Validators.required);
     hidePass: boolean = true;
 
-    constructor(public authService: AuthService, public router: Router) {}
+    constructor(public authService: AuthService) {}
 
     ngOnInit(): void {}
 
     signup() {
-        console.log({ email: this.email, pass: this.pass });
-        this.authService
-            .doRegister(this.email.value, this.pass.value)
-            .then((res) => this.router.navigate(['home']))
-            .catch((err) => console.error(err));
+        if (!this.email.errors && !this.pass.errors) {
+            console.log({
+                email: this.email.value,
+                emailField: this.email,
+                pass: this.pass.value,
+                passField: this.pass,
+            });
+            this.authService.doRegister(this.email.value, this.pass.value);
+        }
     }
 
     googleAuth() {
-        this.authService
-            .doGoogleSignup()
-            .then((res) => this.router.navigate(['home']))
-            .catch((err) => console.error(err));
+        this.authService.doGoogleSignup();
     }
 
     facebookAuth() {
-        this.authService
-            .doFacebookSignup()
-            .then((res) => this.router.navigate(['home']))
-            .catch((err) => console.error(err));
+        this.authService.doFacebookSignup();
     }
 }

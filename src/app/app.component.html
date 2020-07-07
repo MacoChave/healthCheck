@@ -8,12 +8,20 @@
     </mat-toolbar>
     <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="changeTheme()">
-            <mat-icon>palette</mat-icon>
-            <span>Tema</span>
+            <mat-icon>invert_colors</mat-icon>
+            <span>Modo oscuro</span>
         </button>
         <button mat-menu-item>
             <mat-icon>translate</mat-icon>
             <span>Traducir</span>
+        </button>
+        <button
+            *ngIf="authService.isLoggedIn"
+            mat-menu-item
+            (click)="signout()"
+        >
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar Sesión</span>
         </button>
         <button mat-menu-item>
             <mat-icon>info</mat-icon>

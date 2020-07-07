@@ -13,37 +13,21 @@ export class SigninComponent implements OnInit {
     pass = new FormControl('', Validators.required);
     hidePass: boolean = true;
 
-    constructor(public authService: AuthService, public router: Router) {}
+    constructor(public authService: AuthService) {}
 
-    ngOnInit(): void {
-        // if (localStorage.getItem('user')) this.router.navigate(['home']);
-        // TODO: VALIDAR SESIÓN ACTIVA
-    }
+    ngOnInit(): void {}
 
     signin() {
         console.log({ email: this.email, pass: this.pass });
-        this.authService
-            .doAccess(this.email.value, this.pass.value)
-            .then((res) => this.router.navigate(['home']))
-            .catch((err) => console.error(err));
+        this.authService.doAccess(this.email.value, this.pass.value);
     }
 
     facebookAuth() {
-        this.authService
-            .doFacebookSignup()
-            .then((res) => {
-                this.router.navigate(['home']);
-            })
-            .catch((err) => console.error(err));
+        this.authService.doFacebookSignup();
     }
 
     googleAuth() {
-        this.authService
-            .doGoogleSignup()
-            .then((res) => {
-                this.router.navigate(['home']);
-            })
-            .catch((err) => console.error(err));
+        this.authService.doGoogleSignup();
     }
 
     recoveryPassword() {

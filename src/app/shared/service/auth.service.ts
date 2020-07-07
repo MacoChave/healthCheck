@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import {
@@ -6,13 +6,19 @@ import {
     AngularFirestore,
 } from '@angular/fire/firestore';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
     userData;
-    constructor(public afAuth: AngularFireAuth, public afs: AngularFirestore) {
+    constructor(
+        public afAuth: AngularFireAuth,
+        public afs: AngularFirestore,
+        public router: Router,
+        public ngZone: NgZone
+    ) {
         afAuth.authState.subscribe((user) => {
             if (user) {
                 this.userData = user;
@@ -24,27 +30,23 @@ export class AuthService {
     }
 
     doAccess(email: string, pass: string) {
-        return new Promise<any>((resolve, reject) => {
-            this.afAuth
-                .signInWithEmailAndPassword(email, pass)
-                .then((res) => {
-                    this.setUserData(res.user);
-                    resolve(res);
-                })
-                .catch((err) => resolve(err));
-        });
+        this.afAuth
+            .signInWithEmailAndPassword(email, pass)
+            .then((res) => {
+                this.ngZone.run(() => this.router.navigate(['home']));
+                this.setUserData(res.user);
+            })
+            .catch((err) => window.alert(err.message));
     }
 
     doRegister(email: string, pass: string) {
-        return new Promise<any>((resolve, reject) => {
-            this.afAuth
-                .createUserWithEmailAndPassword(email, pass)
-                .then((res) => {
-                    this.setUserData(res.user);
-                    resolve(res);
-                })
-                .catch((err) => resolve(err));
-        });
+        this.afAuth
+            .createUserWithEmailAndPassword(email, pass)
+            .then((res) => {
+                this.ngZone.run(() => this.router.navigate(['home']));
+                this.setUserData(res.user);
+            })
+            .catch((err) => window.alert(err.message));
     }
 
     forgotPassword(email: string) {
@@ -53,27 +55,26 @@ export class AuthService {
 
     doFacebookSignup() {
         let provider = new auth.FacebookAuthProvider();
+        provider.addScope('profile');
         provider.addScope('email');
-        return this.authSignin(provider);
+        this.authSignin(provider);
     }
 
     doGoogleSignup() {
         let provider = new auth.GoogleAuthProvider();
         provider.addScope('profile');
         provider.addScope('email');
-        return this.authSignin(provider);
+        this.authSignin(provider);
     }
 
     authSignin(provider) {
-        return new Promise<any>((resolve, reject) => {
-            this.afAuth
-                .signInWithPopup(provider)
-                .then((res) => {
-                    this.setUserData(res.user);
-                    resolve(res);
-                })
-                .catch((err) => resolve(err));
-        });
+        this.afAuth
+            .signInWithPopup(provider)
+            .then((res) => {
+                this.ngZone.run(() => this.router.navigate(['home']));
+                this.setUserData(res.user);
+            })
+            .catch((err) => window.alert(err));
     }
 
     setUserData(user) {
@@ -87,7 +88,7 @@ export class AuthService {
             photoURL: user.photoURL,
             emailVerified: user.emailVerified,
         };
-        userRef.set(this.userData, {
+        return userRef.set(this.userData, {
             merge: true,
         });
     }
@@ -99,6 +100,7 @@ export class AuthService {
 
     doSignout() {
         this.afAuth.signOut();
-        localStorage.setItem('user', '');
+        localStorage.setItem('user', '{}');
+        this.router.navigate(['']);
     }
 }

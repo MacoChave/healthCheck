@@ -1,5 +1,7 @@
 import { Component, HostBinding } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { AuthService } from './shared/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -12,9 +14,13 @@ export class AppComponent {
     title = 'healthCheck';
     darkTheme: boolean = false;
 
-    constructor(public overlayContainer: OverlayContainer) {}
+    constructor(
+        public overlayContainer: OverlayContainer,
+        public authService: AuthService
+    ) {}
 
     ngOnInit() {
+        // this.authService.isLoggedIn;
         this.darkTheme = JSON.parse(localStorage.getItem('darkTheme'));
         this.setTheme();
     }
@@ -34,5 +40,10 @@ export class AppComponent {
     onSetTheme(theme: string) {
         // this.overlayContainer.getContainerElement().classList.add(theme);
         this.mainCssClass = theme;
+    }
+
+    signout() {
+        this.authService.doSignout();
+        // this.router.navigate(['']);
     }
 }

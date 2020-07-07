@@ -7,15 +7,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-    constructor(public authService: AuthService, public router: Router) {}
+    constructor(public authService: AuthService) {}
 
-    ngOnInit(): void {
-        // if (localStorage.getItem('user')) this.router.navigate(['']);
-        // TODO: VALIDAR SESION ACTIVA
-    }
-
-    signout() {
-        this.authService.doSignout();
-        this.router.navigate(['']);
-    }
+    ngOnInit(): void {}
 }
