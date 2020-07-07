@@ -11,9 +11,11 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SigninComponent } from './component/session/signin/signin.component';
+import { HomeComponent } from './component/dashboard/home/home.component';
+import { SignupComponent } from './component/session/signup/signup.component';
 
 @NgModule({
-    declarations: [AppComponent, SigninComponent],
+    declarations: [AppComponent, SigninComponent, HomeComponent, SignupComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

@@ -7,7 +7,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    @HostBinding('class') mainCssClass = 'lightTheme';
+    @HostBinding('class') mainCssClass;
 
     title = 'healthCheck';
     darkTheme: boolean = false;
@@ -32,7 +32,7 @@ export class AppComponent {
     }
 
     onSetTheme(theme: string) {
-        this.overlayContainer.getContainerElement().classList.add(theme);
+        // this.overlayContainer.getContainerElement().classList.add(theme);
         this.mainCssClass = theme;
     }
 }

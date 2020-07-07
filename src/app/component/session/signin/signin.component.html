@@ -4,7 +4,7 @@
             <mat-card-title>Iniciar sesión</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <form class="form" (ngSubmit)="signin()">
+            <form class="form">
                 <mat-form-field class="form__field">
                     <mat-label>Correo electrónico</mat-label>
                     <input
@@ -52,38 +52,55 @@
                     </button>
                 </mat-form-field>
 
-                <button mat-flat-button color="accent" class="form__submit">
+                <button
+                    mat-flat-button
+                    color="accent"
+                    class="form__submit"
+                    (ngSubmit)="signin()"
+                >
                     Iniciar Sesión
                 </button>
             </form>
+
+            <button
+                mat-button
+                color="accent"
+                class="form__field"
+                (click)="recoveryPassword()"
+            >
+                Recuperar contraseña
+            </button>
+
             <div class="form__field socialAuth">
                 <p>
-                    Inicia sesión con
-                    <button mat-button (click)="googleAuth()">
-                        <mat-icon
-                            ><span
-                                class="iconify google"
-                                data-icon="bx:bxl-google"
-                                data-inline="false"
-                            ></span
-                        ></mat-icon>
-                    </button>
-                    <button mat-button (click)="facebookAuth()">
-                        <mat-icon
-                            ><span
-                                class="iconify facebook"
-                                data-icon="bx:bxl-facebook"
-                                data-inline="false"
-                            ></span
-                        ></mat-icon>
-                    </button>
+                    o puedes ingresar con
                 </p>
+                <button mat-button (click)="googleAuth()">
+                    <mat-icon
+                        ><span
+                            class="iconify google"
+                            data-icon="bx:bxl-google"
+                            data-inline="false"
+                        ></span
+                    ></mat-icon>
+                </button>
+                <button mat-button (click)="facebookAuth()">
+                    <mat-icon
+                        ><span
+                            class="iconify facebook"
+                            data-icon="bx:bxl-facebook"
+                            data-inline="false"
+                        ></span
+                    ></mat-icon>
+                </button>
             </div>
         </mat-card-content>
     </mat-card>
 
     <div class="form__field switchSession">
         <p>¿Aún no tienes cuenta?</p>
-        <button mat-button color="accent">Crear cuenta</button>
+        <button mat-button color="accent" [routerLink]="['/signup']">
+            Crear cuenta
+        </button>
     </div>
 </div>

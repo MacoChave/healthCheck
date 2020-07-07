@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../../service/auth.service';
+import { AuthService } from 'src/app/shared/service/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html',
@@ -11,28 +13,41 @@ export class SigninComponent implements OnInit {
     pass = new FormControl('', Validators.required);
     hidePass: boolean = true;
 
-    constructor(public authService: AuthService) {}
+    constructor(public authService: AuthService, public router: Router) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        // if (localStorage.getItem('user')) this.router.navigate(['home']);
+        // TODO: VALIDAR SESIÓN ACTIVA
+    }
 
     signin() {
         this.authService
-            .doRegister(this.email.value, this.pass.value)
-            .then((res) => console.log(res))
+            .doAccess(this.email.value, this.pass.value)
+            .then((res) => {
+                this.router.navigate(['home']);
+            })
             .catch((err) => console.error(err));
     }
 
     facebookAuth() {
         this.authService
             .doFacebookSignup()
-            .then((res) => console.log(res))
+            .then((res) => {
+                this.router.navigate(['home']);
+            })
             .catch((err) => console.error(err));
     }
 
     googleAuth() {
         this.authService
             .doGoogleSignup()
-            .then((res) => console.log(res))
+            .then((res) => {
+                this.router.navigate(['home']);
+            })
             .catch((err) => console.error(err));
+    }
+
+    recoveryPassword() {
+        this.authService.forgotPassword(this.email.value);
     }
 }
