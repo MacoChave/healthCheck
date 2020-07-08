@@ -13,9 +13,12 @@ export class SignupComponent implements OnInit {
     pass = new FormControl('', Validators.required);
     hidePass: boolean = true;
 
-    constructor(public authService: AuthService) {}
+    constructor(public authService: AuthService, public router: Router) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        if (this.authService.isLoggedIn === true)
+            this.router.navigate(['home']);
+    }
 
     signup() {
         if (!this.email.errors && !this.pass.errors) {
