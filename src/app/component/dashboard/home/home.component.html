@@ -6,10 +6,13 @@
         <img
             class="menu__img"
             src="../../../../assets/glucometer.png"
-            width="25%"
             alt="Blood Pressure"
         />
-        <div matRipple class="btn menu__action"></div>
+        <div
+            matRipple
+            class="btn menu__action"
+            [routerLink]="['/glucose']"
+        ></div>
     </mat-card>
     <mat-card class="menu__item">
         <mat-card-header>
@@ -18,7 +21,6 @@
         <img
             class="menu__img"
             src="../../../../assets/bloodPressure.png"
-            width="25%"
             alt="Glucose"
         />
         <div matRipple class="btn menu__action"></div>
@@ -30,7 +32,6 @@
         <img
             class="menu__img"
             src="../../../../assets/scale.png"
-            width="25%"
             alt="Weight"
         />
         <div matRipple class="btn menu__action"></div>

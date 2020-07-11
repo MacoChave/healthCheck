@@ -6,6 +6,7 @@ import { AuthGuard } from 'src/app/shared/guard/auth.guard';
 import { SigninComponent } from 'src/app/component/session/signin/signin.component';
 import { HomeComponent } from 'src/app/component/dashboard/home/home.component';
 import { SignupComponent } from 'src/app/component/session/signup/signup.component';
+import { GlucoseComponent } from 'src/app/component/dashboard/glucose/glucose.component';
 
 const routes: Routes = [
     {
@@ -24,6 +25,11 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'glucose',
+        component: GlucoseComponent,
         canActivate: [AuthGuard],
     },
 ];

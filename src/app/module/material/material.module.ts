@@ -6,6 +6,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     exports: [
@@ -16,6 +18,8 @@ import { MatRippleModule } from '@angular/material/core';
         MatInputModule,
         MatCardModule,
         MatRippleModule,
+        MatTableModule,
+        MatDialogModule,
     ],
     imports: [
         MatToolbarModule,
@@ -25,6 +29,8 @@ import { MatRippleModule } from '@angular/material/core';
         MatInputModule,
         MatCardModule,
         MatRippleModule,
+        MatTableModule,
+        MatDialogModule,
     ],
 })
 export class MaterialModule {}

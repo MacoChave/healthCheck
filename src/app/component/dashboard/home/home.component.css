@@ -1,7 +1,7 @@
 :host {
     display: block;
     min-height: 90vh;
-    height: fill-available;
+    height: stretch;
     padding: 2rem;
 }
 
@@ -9,7 +9,7 @@
     display: grid;
     grid-gap: 1rem;
     place-content: center;
-    grid-auto-rows: 150px;
+    /* grid-auto-rows: 150px; */
 }
 
 .menu__item {
@@ -19,6 +19,8 @@
 .menu__img {
     display: block;
     margin: 0 auto;
+    width: 50%;
+    height: auto;
 }
 
 .btn {
