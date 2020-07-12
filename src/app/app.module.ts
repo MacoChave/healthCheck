@@ -30,6 +30,7 @@ import {
     TemperatureComponent,
     DialogTemperature,
 } from './component/dashboard/temperature/temperature.component';
+import { NotfoundComponent } from './component/notfound/notfound.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import {
         DialogWeight,
         TemperatureComponent,
         DialogTemperature,
+        NotfoundComponent,
     ],
     imports: [
         BrowserModule,

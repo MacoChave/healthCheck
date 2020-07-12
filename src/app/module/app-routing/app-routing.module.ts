@@ -10,6 +10,7 @@ import { GlucoseComponent } from 'src/app/component/dashboard/glucose/glucose.co
 import { BloodPressureComponent } from 'src/app/component/dashboard/blood-pressure/blood-pressure.component';
 import { WeightComponent } from 'src/app/component/dashboard/weight/weight.component';
 import { TemperatureComponent } from 'src/app/component/dashboard/temperature/temperature.component';
+import { NotfoundComponent } from 'src/app/component/notfound/notfound.component';
 
 const routes: Routes = [
     {
@@ -49,6 +50,10 @@ const routes: Routes = [
         path: 'temperature',
         component: TemperatureComponent,
         canActivate: [AuthGuard],
+    },
+    {
+        path: '**',
+        component: NotfoundComponent,
     },
 ];
 

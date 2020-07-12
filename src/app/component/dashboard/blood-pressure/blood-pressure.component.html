@@ -28,7 +28,9 @@
     <mat-row *matRowDef="let row; columns: displayedCols"></mat-row>
 </mat-table>
 
-<div class="info__container" *ngIf="!hasRow">No hay data :(</div>
+<div class="info__container" *ngIf="!hasRow">
+    <img class="info__image" src="../../../../assets/empty.png" alt="Empty" />
+</div>
 
 <div class="fab__container">
     <button mat-fab color="accent" (click)="openPopup()">

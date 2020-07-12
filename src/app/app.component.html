@@ -1,8 +1,5 @@
 <div class="rootStyle">
     <mat-toolbar color="primary">
-        <button mat-icon-button *ngIf="isLoggedIn" (click)="onBack()">
-            <mat-icon class="mat-18">arrow_back</mat-icon>
-        </button>
         <span>Check Health</span>
         <span class="spacer"></span>
         <button mat-icon-button [matMenuTriggerFor]="menu" class="icon">
@@ -13,7 +10,7 @@
         <button mat-menu-item>
             <mat-slide-toggle
                 [(ngModel)]="darkTheme"
-                (change)="changeTheme(event)"
+                (change)="changeTheme()"
                 color="primary"
             >
                 Modo oscuro

@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    height: stretch;
+    padding: 2rem;
+}
+
+.fullImage {
+    width: 80%;
+    height: auto;
+}

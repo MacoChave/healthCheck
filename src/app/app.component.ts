@@ -13,7 +13,6 @@ export class AppComponent {
 
     title = 'healthCheck';
     darkTheme: boolean = false;
-    isLogged: boolean = false;
 
     constructor(
         public overlayContainer: OverlayContainer,
@@ -47,6 +46,4 @@ export class AppComponent {
         this.authService.doSignout();
         // this.router.navigate(['']);
     }
-
-    onBack() {}
 }

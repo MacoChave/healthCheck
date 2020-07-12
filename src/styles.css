@@ -22,3 +22,8 @@ body {
     display: flex;
     justify-content: flex-end;
 }
+
+.info__image {
+    width: 100%;
+    height: auto;
+}
