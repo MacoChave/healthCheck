@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from 'src/app/shared/service/database.service';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DatabaseService } from 'src/app/shared/service/database.service';
 
 @Component({
-    selector: 'glucose',
-    templateUrl: './glucose.component.html',
-    styleUrls: ['./glucose.component.css'],
+    selector: 'app-weight',
+    templateUrl: './weight.component.html',
+    styleUrls: ['./weight.component.css'],
 })
-export class GlucoseComponent implements OnInit {
+export class WeightComponent implements OnInit {
     hasRow: boolean = false;
-    glucoses: any[];
+    weights: any[];
     dataChart: any[];
-    labelChartData: ChartDataSets[] = [{ data: [], label: 'Glucosa' }];
+    labelChartData: ChartDataSets[] = [{ data: [], label: 'Weight' }];
     lineChartLabels: Label[];
     displayedCols: string[] = ['date', 'data'];
     lineChartOptions = {
@@ -29,22 +29,21 @@ export class GlucoseComponent implements OnInit {
     constructor(public dbService: DatabaseService, public dialog: MatDialog) {}
 
     ngOnInit(): void {
-        this.dbService.getHealth('glucose').subscribe((snapshot) => {
-            this.glucoses = snapshot;
-            this.hasRow = this.glucoses.length > 0;
+        this.dbService.getHealth('weight').subscribe((snapshot) => {
+            this.weights = snapshot;
+            this.hasRow = this.weights.length > 0;
             this.dataChart = [];
             this.lineChartLabels = [];
-            this.glucoses.forEach((glucose) => {
-                this.lineChartLabels.push(glucose.date);
-                this.dataChart.push(glucose.data);
+            this.weights.forEach((weight) => {
+                this.lineChartLabels.push(weight.date);
+                this.dataChart.push(weight.data);
             });
             this.labelChartData[0].data = this.dataChart;
         });
     }
 
     openPopup(): void {
-        const dialogRef = this.dialog.open(DialogGlucose);
-
+        const dialogRef = this.dialog.open(DialogWeight);
         dialogRef.afterClosed().subscribe((res) => {
             if (res) {
                 var dateObj = new Date();
@@ -54,7 +53,7 @@ export class GlucoseComponent implements OnInit {
 
                 this.dbService.setHealth(
                     { date: currentDate, data: res },
-                    'glucose'
+                    'weight'
                 );
             }
         });
@@ -62,12 +61,12 @@ export class GlucoseComponent implements OnInit {
 }
 
 @Component({
-    selector: 'dialogGlucose',
-    templateUrl: 'dialogGlucose.component.html',
+    selector: 'dialogWeight',
+    templateUrl: 'dialogWeight.component.html',
 })
-export class DialogGlucose {
+export class DialogWeight {
     res: number;
-    constructor(public dialogRef: MatDialogRef<DialogGlucose>) {}
+    constructor(public dialogRef: MatDialogRef<DialogWeight>) {}
 
     onNoClick(): void {
         this.dialogRef.close();

@@ -7,6 +7,8 @@ import { SigninComponent } from 'src/app/component/session/signin/signin.compone
 import { HomeComponent } from 'src/app/component/dashboard/home/home.component';
 import { SignupComponent } from 'src/app/component/session/signup/signup.component';
 import { GlucoseComponent } from 'src/app/component/dashboard/glucose/glucose.component';
+import { BloodPressureComponent } from 'src/app/component/dashboard/blood-pressure/blood-pressure.component';
+import { WeightComponent } from 'src/app/component/dashboard/weight/weight.component';
 
 const routes: Routes = [
     {
@@ -30,6 +32,16 @@ const routes: Routes = [
     {
         path: 'glucose',
         component: GlucoseComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'blood-pressure',
+        component: BloodPressureComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'weight',
+        component: WeightComponent,
         canActivate: [AuthGuard],
     },
 ];

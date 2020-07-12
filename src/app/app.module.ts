@@ -18,6 +18,14 @@ import {
     GlucoseComponent,
     DialogGlucose,
 } from './component/dashboard/glucose/glucose.component';
+import {
+    BloodPressureComponent,
+    DialogBloodPress,
+} from './component/dashboard/blood-pressure/blood-pressure.component';
+import {
+    WeightComponent,
+    DialogWeight,
+} from './component/dashboard/weight/weight.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +35,10 @@ import {
         SignupComponent,
         GlucoseComponent,
         DialogGlucose,
+        BloodPressureComponent,
+        DialogBloodPress,
+        WeightComponent,
+        DialogWeight,
     ],
     imports: [
         BrowserModule,
@@ -42,6 +54,6 @@ import {
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [DialogGlucose],
+    entryComponents: [DialogGlucose, DialogBloodPress, DialogWeight],
 })
 export class AppModule {}

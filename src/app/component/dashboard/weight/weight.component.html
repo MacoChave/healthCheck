@@ -12,14 +12,14 @@
     </canvas>
 </div>
 
-<mat-table [dataSource]="glucoses" class="mat-elevation-z8">
+<mat-table [dataSource]="weights" class="mat-elevation-z8">
     <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-        <mat-cell *matCellDef="let glucose">{{ glucose.date }}</mat-cell>
+        <mat-cell *matCellDef="let item">{{ item.date }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="data">
-        <mat-header-cell *matHeaderCellDef>Glucosa</mat-header-cell>
-        <mat-cell *matCellDef="let glucose">{{ glucose.data }}</mat-cell>
+        <mat-header-cell *matHeaderCellDef>Peso</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{ item.data }}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
