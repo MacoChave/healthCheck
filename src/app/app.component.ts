@@ -13,20 +13,21 @@ export class AppComponent {
 
     title = 'healthCheck';
     darkTheme: boolean = false;
+    isLogged: boolean = false;
 
     constructor(
         public overlayContainer: OverlayContainer,
-        public authService: AuthService
+        public authService: AuthService,
+        public router: Router
     ) {}
 
     ngOnInit() {
-        // this.authService.isLoggedIn;
         this.darkTheme = JSON.parse(localStorage.getItem('darkTheme'));
         this.setTheme();
     }
 
     changeTheme() {
-        this.darkTheme = !this.darkTheme;
+        // this.darkTheme = !this.darkTheme;
         localStorage.setItem('darkTheme', JSON.stringify(this.darkTheme));
         this.setTheme();
     }
@@ -46,4 +47,6 @@ export class AppComponent {
         this.authService.doSignout();
         // this.router.navigate(['']);
     }
+
+    onBack() {}
 }

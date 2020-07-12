@@ -1,0 +1,13 @@
+<h1 mat-dialog-title class="dialog__title">Nueva medición de temperatura</h1>
+<div mat-dialog-content class="dialog__content">
+    <mat-form-field class="form__field">
+        <mat-label>Temperatura</mat-label>
+        <input matInput type="number" [(ngModel)]="res" />
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog__actions">
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="res" cdkFocusInitial>
+        Aceptar
+    </button>
+</div>

@@ -26,6 +26,10 @@ import {
     WeightComponent,
     DialogWeight,
 } from './component/dashboard/weight/weight.component';
+import {
+    TemperatureComponent,
+    DialogTemperature,
+} from './component/dashboard/temperature/temperature.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +43,8 @@ import {
         DialogBloodPress,
         WeightComponent,
         DialogWeight,
+        TemperatureComponent,
+        DialogTemperature,
     ],
     imports: [
         BrowserModule,
@@ -54,6 +60,11 @@ import {
     ],
     providers: [],
     bootstrap: [AppComponent],
-    entryComponents: [DialogGlucose, DialogBloodPress, DialogWeight],
+    entryComponents: [
+        DialogGlucose,
+        DialogBloodPress,
+        DialogWeight,
+        DialogTemperature,
+    ],
 })
 export class AppModule {}

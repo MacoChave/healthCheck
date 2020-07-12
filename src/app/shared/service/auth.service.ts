@@ -101,6 +101,6 @@ export class AuthService {
     doSignout() {
         this.afAuth.signOut();
         localStorage.setItem('user', '{}');
-        this.router.navigate(['']);
+        this.router.navigate(['signin']);
     }
 }

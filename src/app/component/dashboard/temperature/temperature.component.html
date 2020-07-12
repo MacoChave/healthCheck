@@ -1,0 +1,34 @@
+<div class="chart__wrapper">
+    <canvas
+        baseChart
+        [datasets]="labelChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins"
+    >
+    </canvas>
+</div>
+
+<mat-table [dataSource]="temperatures" class="mat-elevation-z8">
+    <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{ item.date }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="data">
+        <mat-header-cell *matHeaderCellDef>Glucosa</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{ item.data }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedCols"></mat-row>
+</mat-table>
+<div class="info__container" *ngIf="!hasRow">No hay data :(</div>
+
+<div class="fab__container">
+    <button mat-fab color="accent" (click)="openPopup()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>

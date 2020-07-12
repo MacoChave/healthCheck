@@ -9,6 +9,7 @@ import { SignupComponent } from 'src/app/component/session/signup/signup.compone
 import { GlucoseComponent } from 'src/app/component/dashboard/glucose/glucose.component';
 import { BloodPressureComponent } from 'src/app/component/dashboard/blood-pressure/blood-pressure.component';
 import { WeightComponent } from 'src/app/component/dashboard/weight/weight.component';
+import { TemperatureComponent } from 'src/app/component/dashboard/temperature/temperature.component';
 
 const routes: Routes = [
     {
@@ -42,6 +43,11 @@ const routes: Routes = [
     {
         path: 'weight',
         component: WeightComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'temperature',
+        component: TemperatureComponent,
         canActivate: [AuthGuard],
     },
 ];
