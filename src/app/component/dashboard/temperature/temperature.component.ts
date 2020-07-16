@@ -14,7 +14,7 @@ export class TemperatureComponent implements OnInit {
     hasRow: boolean = false;
 
     dataChart: any[];
-    labelChartData: ChartDataSets[] = [{ data: [], label: 'Glucosa' }];
+    labelChartData: ChartDataSets[] = [{ data: [], label: 'Temperatura' }];
     lineChartLabels: Label[];
     displayedCols: string[] = ['date', 'data'];
     lineChartOptions = {
